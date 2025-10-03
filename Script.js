@@ -35,7 +35,7 @@ function registrarPaciente() {
     if (indiceEditar === -1) {
         // Modo Registro: Validación de DNI duplicado
         if (pacientes.some(p => p.dni === dni)) {
-            alert(`⚠️ Error: El paciente con DNI ${dni} ya está registrado.`);
+            alert(`Error: El paciente con DNI ${dni} ya está registrado.`);
             return;
         }
         pacientes.push(paciente);
@@ -44,7 +44,7 @@ function registrarPaciente() {
         
         const dniDuplicado = pacientes.some((p, i) => p.dni === dni && i !== indiceEditar);
         if (dniDuplicado) {
-             alert(`⚠️ Error: El DNI ${dni} ya pertenece a otro paciente.`);
+             alert(`Error: El DNI ${dni} ya pertenece a otro paciente.`);
              return;
         }
         
@@ -125,4 +125,5 @@ function limpiarFormulario() {
 }
 
 document.addEventListener('DOMContentLoaded', mostrarPacientes);    
+
 
