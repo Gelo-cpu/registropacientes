@@ -1,4 +1,4 @@
-let pacientes = cargarPacientes(); // Inicializa el array con datos de Local Storage
+let pacientes = cargarPacientes();
 let indiceEditar = -1;
 
 function cargarPacientes() {
@@ -41,8 +41,7 @@ function registrarPaciente() {
         pacientes.push(paciente);
         alert('Paciente registrado con éxito.');
     } else {
-        // Modo Edición
-        // Asegurar que no se duplique DNI al editar otro registro
+        
         const dniDuplicado = pacientes.some((p, i) => p.dni === dni && i !== indiceEditar);
         if (dniDuplicado) {
              alert(`⚠️ Error: El DNI ${dni} ya pertenece a otro paciente.`);
@@ -50,7 +49,7 @@ function registrarPaciente() {
         }
         
         pacientes[indiceEditar] = paciente;
-        cancelarEdicion(); // Resetear la interfaz después de guardar
+        cancelarEdicion();
         alert('Paciente actualizado con éxito.');
     }
     
@@ -94,7 +93,7 @@ function editarPaciente(i) {
     document.getElementById('motivo').value = p.motivo;
     document.getElementById('direccion').value = p.direccion;
     
-    document.getElementById('dni').disabled = true; // Deshabilitar DNI en edición
+    document.getElementById('dni').disabled = true;
     document.querySelector('#formularioPaciente button.btn-success').textContent = 'Guardar Cambios';
 
     indiceEditar = i;
@@ -126,3 +125,4 @@ function limpiarFormulario() {
 }
 
 document.addEventListener('DOMContentLoaded', mostrarPacientes);    
+
