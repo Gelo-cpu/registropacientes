@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro de Pacientes - Clínica</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Registro de Pacientes - Recepción Clínica</h4>
+        </div>
+        <div class="card-body">
+            <form id="formularioPaciente" class="row g-3">
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombres y Apellidos</label>
+                    <input type="text" id="nombre" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text"
+                        id="dni"
+                        class="form-control"
+                        maxlength="8"
+                        pattern="^\d{8}$"
+                        title="Ingrese exactamente 8 dígitos numéricos"
+                        required
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+                <div class="col-md-3">
+                    <label for="edad" class="form-label">Edad</label>
+                    <input type="number" id="edad" class="form-control" min="0" required>
+                </div>
+                
+                <div class="col-md-8">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" id="direccion" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="motivo" class="form-label">Motivo de Consulta</label>
+                    <input type="text" id="motivo" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" onclick="registrarPaciente()" class="btn btn-success">Registrar</button>
+                    <button type="button" onclick="cancelarEdicion()" id="cancelarBtn" class="btn btn-secondary d-none">Cancelar Edición</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-4 shadow">
+        <div class="card-header bg-secondary text-white">
+            <h5>Pacientes Registrados</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <th>Motivo</th>
+                        <th>Dirección</th> <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPacientes"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
