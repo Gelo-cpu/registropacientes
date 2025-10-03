@@ -1,8 +1,6 @@
-// --- Variables Globales ---
 let pacientes = cargarPacientes(); // Inicializa el array con datos de Local Storage
 let indiceEditar = -1;
 
-// --- Funciones de Persistencia (Local Storage) ---
 function cargarPacientes() {
     const data = localStorage.getItem('pacientesClinica');
     return data ? JSON.parse(data) : [];
@@ -12,7 +10,6 @@ function guardarPacientes() {
     localStorage.setItem('pacientesClinica', JSON.stringify(pacientes));
 }
 
-// --- Función Principal de Registro/Edición ---
 function registrarPaciente() {
     const nombre = document.getElementById('nombre').value.trim();
     const dni = document.getElementById('dni').value.trim();
@@ -20,7 +17,6 @@ function registrarPaciente() {
     const motivo = document.getElementById('motivo').value.trim();
     const direccion = document.getElementById('direccion').value.trim(); 
 
-    // Validación Básica
     if (nombre === '' || dni === '' || edad === '' || motivo === '' || direccion === '') {
         alert("Por favor, complete todos los campos.");
         return;
@@ -63,7 +59,6 @@ function registrarPaciente() {
     guardarPacientes(); // Guardar en Local Storage
 }
 
-// --- Función para Mostrar Pacientes ---
 function mostrarPacientes() {
     const tabla = document.getElementById('tablaPacientes');
     tabla.innerHTML = '';
@@ -90,7 +85,6 @@ function mostrarPacientes() {
     });
 }
 
-// --- Funciones de Edición y Eliminación ---
 
 function editarPaciente(i) {
     const p = pacientes[i];
@@ -131,5 +125,4 @@ function limpiarFormulario() {
     document.getElementById('formularioPaciente').reset();
 }
 
-// --- Inicialización al Cargar la Página ---
-document.addEventListener('DOMContentLoaded', mostrarPacientes);
+document.addEventListener('DOMContentLoaded', mostrarPacientes);    
